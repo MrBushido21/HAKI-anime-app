@@ -1,0 +1,79 @@
+.AnimePage h1 {
+  display: inline-block;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(to right, #A855F7, #27AE60);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+.AnimePage h1:hover {
+  transform: skew(-3deg);
+}
+.AnimePage h2 {
+  display: inline-block;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(to right, #A855F7, #27AE60);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease-in-out;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.AnimePage h2:hover {
+  transform: skew(-3deg);
+}
+@media (max-width: 600px) {
+  .AnimePage .anime-info {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+.AnimePage .anime-poster {
+  margin-right: 20%;
+}
+@media (max-width: 600px) {
+  .AnimePage .anime-poster {
+    margin: 0 auto;
+  }
+}
+.AnimePage .anime-info-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 11px;
+}
+@media (max-width: 600px) {
+  .AnimePage .anime-info-container dl {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 400px;
+    justify-content: space-between;
+  }
+}
+.AnimePage .anime-info-container dd {
+  color: rgb(100, 100, 100);
+}
+.AnimePage iframe {
+  max-width: 100%;
+}
+.AnimePage .characters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  column-gap: 20px;
+  row-gap: 50px;
+}
+.AnimePage .characters-container .characters-item img {
+  box-shadow: 1px 1px 5px;
+  height: 100%;
+}
+.AnimePage .characters-container .characters-item .characters-name {
+  font-weight: 700;
+}
+.AnimePage .characters-container .characters-item .characters-role {
+  color: rgb(122, 196, 11);
+  font-weight: 500;
+}

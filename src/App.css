@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+body.lock {
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  overflow-x: hidden;
+  padding-bottom: 20px;
+  background-color: wheat;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.wrapper h1 {
+  display: inline-block;
+  background: linear-gradient(to right, #A855F7, #27AE60);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+@media (max-width: 475px) {
+  .wrapper h1 {
+    font-size: 42px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper .container {
+  max-width: 1230px;
+  padding: 0 15px;
+}
+.wrapper header {
+  width: 100%;
+  min-height: 50px;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  /* Dark mode btn */
+  /* BURGER */
+  /* Rotate the lines to form an X */
+}
+.wrapper header a:hover {
+  color: crimson;
+  transition: 0.3s ease 0s;
+}
+.wrapper header nav {
+  column-gap: 20px;
+}
+.wrapper header nav a {
+  font-size: 18px;
+}
+.wrapper header .dark-mode-btn {
+  order: 9;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  width: 51px;
+  height: 26px;
+  padding: 5px;
+  border-radius: 50px;
+  background-color: #272727;
+}
+.wrapper header .dark-mode-btn::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: left 0.2s ease-in;
+}
+.wrapper header .dark-mode-btn.active::before {
+  left: 26px;
+}
+.wrapper header .dark-mode-btn__icon {
+  position: relative;
+  z-index: 9;
+}
+.wrapper header .burger-menu {
+  display: none;
+}
+.wrapper header .burger-line {
+  width: 35px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.3s ease 0s;
+}
+.wrapper header .burger-menu.active .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.wrapper header .burger-menu.active .burger-line:nth-child(2) {
+  transform: rotate(-45deg) translate(4px, -4px);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 680px) {
+  .burger-menu {
+    display: flex !important;
+    flex-direction: column;
+    cursor: pointer;
   }
-  to {
-    transform: rotate(360deg);
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: -100%;
+    width: 100%;
+    background-color: #fff;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    row-gap: 40px;
+    font-size: 20px;
+    color: black;
+    transition: 0.3s ease 0s;
+    z-index: 10000;
+  }
+  .nav.active {
+    left: 0;
   }
 }
