@@ -18,20 +18,15 @@ export const AnimePage = ({
     const [animeCharacters, setAnimeCharacters] = useState<CharactersType[]>([])
     
       const getAnimeById = async (id: any) => {
-        setLoading(true)
         const response = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
         const data = await response.json();
-        setAnimeById(data.data)
-        console.log(animeById);
-        setLoading(false)   
+        setAnimeById(data.data) 
       }
       
       const getAnimeCharacters = async (id: any) => {
-        setLoading(true)
         const response = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
         const data = await response.json();
         setAnimeCharacters(data.data)
-        setLoading(false)
       }
 let {id} = useParams()
 
@@ -39,15 +34,13 @@ useEffect(() => {
     getAnimeById(id)
     getAnimeCharacters(id)
 }, []);
-
-    console.log(animeById);
-    
+   
     return (
         (animeById && Object.keys(animeById).length > 0)
         ? <Anime 
         animeById={animeById}
         animeCharacters={animeCharacters}
         />
-        : <h2>Loading...</h2>
+        : <h1 className='text-center text-l font-bold'>Loading...</h1>
     );
 }

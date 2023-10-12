@@ -8,9 +8,20 @@ export const Header = ({ }: PropsType) => {
     const [darkMode, setDarkMode] = useState<boolean>(false)
     const [menu, setMenu] = useState(false)
 
+
     const changeMode = () => {
-        setDarkMode(!darkMode)
-    }
+        const newDarkMode = !darkMode;
+        setDarkMode(newDarkMode);
+        localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+    };
+
+
+    useEffect(() => {
+        const savedDarkMode = JSON.parse(localStorage.getItem('darkMode') || 'false');
+        if (typeof savedDarkMode === 'boolean') {
+          setDarkMode(savedDarkMode);
+        }
+      }, []); 
 
     useEffect(() => {
         if (darkMode) {
@@ -19,6 +30,7 @@ export const Header = ({ }: PropsType) => {
             document.documentElement.classList.remove("dark")
         }
     }, [darkMode])
+ 
 
     useEffect(() => {
         if (menu) {
@@ -27,6 +39,8 @@ export const Header = ({ }: PropsType) => {
             document.body.classList.remove("lock")
         }
     }, [menu])
+
+    
 
     return (
         <header className='header bg-zinc-950 py-6'>
