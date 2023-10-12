@@ -3,7 +3,7 @@ body.lock {
 }
 
 .wrapper {
-  overflow-x: hidden;
+  overflow: hidden;
   padding-bottom: 20px;
   background-color: wheat;
 }
