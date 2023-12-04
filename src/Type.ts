@@ -47,13 +47,13 @@ export type AnimeType = {
 export type ImagesType = {
     "jpg": {
         "image_url": string,
-        "small_image_url": string
-        "large_image_url": string
+        "small_image_url"?: string
+        "large_image_url"?: string
     },
     "webp": {
         "image_url": string
-        "small_image_url": string
-        "large_image_url": string
+        "small_image_url"?: string
+        "large_image_url"?: string
     }
 }
 export type TrailerType = {
@@ -122,7 +122,19 @@ export type StreamingType = [
         "url": string
     }
 ]
-
+export type VoiceActores =  {
+    "person": {
+        "mal_id": number,
+        "url": string,
+        "images": {
+            "jpg": {
+                "image_url": string
+            }
+        },
+        "name": string
+    },
+    "language": string
+}
 //========================
 // ANIME CHARACTERS
 //========================
@@ -136,20 +148,14 @@ export type CharactersType = {
         "name": string
     },
     "role": string
-    "voice_actors": [
-        {
-            "person": {
-                "mal_id": number,
-                "url": string,
-                "images": {
-                    "jpg": {
-                        "image_url": string
-                    }
-                },
-                "name": string
-            },
-            "language": string
-        }
-    ]
+    "favorites": number
+    "voice_actors": VoiceActores[]
 
+}
+
+//Meito
+
+export type MeitoType = {
+    img: string,
+    name: string
 }

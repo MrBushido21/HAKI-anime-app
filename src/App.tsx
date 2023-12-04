@@ -4,57 +4,47 @@ import { HomePage } from './Pages/HomePage/HomePage';
 import { Route, Routes } from 'react-router';
 import { AnimePage } from './Pages/AnimePage/AnimePage';
 import { Header } from './components/Header';
-import { AnimeType } from './Type';
+import { getAnimes, getAnimesByCategory, getAnimesBySearch } from './store/animes/animesSlice';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { RootState } from './store/store';
+import { Mugiwars } from './Pages/Mugiwars/Mugiwars';
+import { HakiPage } from './Pages/Haki/HakiPage';
+import { Meito } from './Pages/Meito/Meito';
+import { Login } from './Pages/Login/Login';
 
 export type CategoryType = "standart" | "popular" | "airing" | "upcoming" | "nothing"
 
 
-
 function App() {
 
-  const [isLoading, setLoading] = useState(true)
-  const [animes, setAnimes] = useState<AnimeType[]>([])
+  const dispatch = useAppDispatch()
+  const isLoading = useAppSelector((state:RootState) => state.animes.isLoading)
+
   const [category, setCategory] = useState<CategoryType>('standart')
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState<string>('')
 
 
-  const basicURL = "https://api.jikan.moe/v4/top/anime?filter="
-
-  const getAnimeData = async (category: string) => {
-    setLoading(true)
-    const response = await fetch(`${basicURL}${category}`);
-    const data = await response.json();
-    setAnimes(data.data)
-    setLoading(false)
-  }
 
   const getAnime = async () => {
     setCategory("standart")
-    const response = await fetch(`https://api.jikan.moe/v4/anime`);
-    const data = await response.json();
-    setAnimes(data.data)
-    setLoading(false)
+    dispatch(getAnimes())
   }
   const getPopularAnime = async () => {
     setCategory("popular")
-    getAnimeData('bypopularity')
+    dispatch(getAnimesByCategory('bypopularity'))
   }
   const getAiringAnime = async () => {
     setCategory("airing")
-    getAnimeData('airing')
+    dispatch(getAnimesByCategory('airing'))
   }
   const getUpcomingAnime = async () => {
     setCategory("upcoming")
-    getAnimeData('upcoming')
+    dispatch(getAnimesByCategory('upcoming'))
   }
 
   const searchAnime = async () => {
     setCategory("nothing")
-    setLoading(true)
-    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${searchValue}&order_by=popularity&sort=asc&sfw`);
-    const data = await response.json();
-    setAnimes(data.data)
-    setLoading(false)
+    dispatch(getAnimesBySearch(searchValue))
     setSearchValue('')
   }
 
@@ -71,7 +61,6 @@ function App() {
        <Routes>
        <Route path='/' element={<HomePage
         getPopularAnime={getPopularAnime} 
-        animes={animes}
         getAnime={getAnime}
         getAiringAnime={getAiringAnime}
         getUpcomingAnime={getUpcomingAnime}
@@ -81,8 +70,11 @@ function App() {
         searchAnime={searchAnime}
         />} />
         <Route path='/anime/:id' element={<AnimePage
-            setLoading={setLoading}
-        />} />             
+        />} />   
+        <Route path='/mugiwars' element={<Mugiwars />}/>          
+        <Route path='/haki' element={<HakiPage />}/>          
+        <Route path='/meito' element={<Meito />}/>          
+        <Route path='/login' element={<Login />}/>          
       </Routes>   
     </div>
   );

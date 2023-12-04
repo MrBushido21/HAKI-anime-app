@@ -3,36 +3,24 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Anime } from '../../components/Anime'
 import { AnimeType, CharactersType } from '../../Type'
+import { getAnimeById, getAnimeCharacters } from '../../store/singleAnimePage/singleAnime'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { RootState } from '../../store/store'
 
 
-type PropsType = {
-    setLoading: (state: boolean) => void
-}
 
 
-export const AnimePage = ({
-    setLoading,
-}: PropsType) => {
-
-    const [animeById, setAnimeById] = useState<AnimeType | null>(null)
-    const [animeCharacters, setAnimeCharacters] = useState<CharactersType[]>([])
-    
-      const getAnimeById = async (id: any) => {
-        const response = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
-        const data = await response.json();
-        setAnimeById(data.data) 
-      }
+export const AnimePage = () => {
+    const dispatch = useAppDispatch()
       
-      const getAnimeCharacters = async (id: any) => {
-        const response = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
-        const data = await response.json();
-        setAnimeCharacters(data.data)
-      }
+    const animeById:AnimeType | null = useAppSelector((state:RootState) => state.singleAnime.animeById)
+    const animeCharacters:CharactersType[] = useAppSelector((state:RootState) => state.singleAnime.characters)
+
 let {id} = useParams()
 
 useEffect(() => {
-    getAnimeById(id)
-    getAnimeCharacters(id)
+    dispatch(getAnimeById(id))
+    dispatch(getAnimeCharacters(id))
 }, []);
    
     return (

@@ -1,0 +1,24 @@
+.meitos {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
+
+.meito-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.meito-cart {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.meito-cart h4 {
+  width: 100%;
+}

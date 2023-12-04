@@ -63,26 +63,37 @@
         max-width: 100%;
     }
 
+    
+}
+.characters-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    column-gap: 20px;
+    row-gap: 50px;
+
+    .characters-item {
+        img {
+            box-shadow: 1px 1px 5px;
+            height: 100%;
+        }
+        .characters-name {
+            font-weight: 700;
+        }
+        .characters-role {
+            color: rgb(122, 196, 11);
+            font-weight: 500;
+        }
+    }
+   
+}
+.Mugiwars {
     .characters-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         column-gap: 20px;
         row-gap: 50px;
-
-        .characters-item {
-            
-            img {
-                box-shadow: 1px 1px 5px;
-                height: 100%;
-            }
-            .characters-name {
-                font-weight: 700;
-            }
-            .characters-role {
-                color: rgb(122, 196, 11);
-                font-weight: 500;
-            }
-        }
-       
+    }
+    .characters-item {
+        margin-bottom: 30px;
     }
 }

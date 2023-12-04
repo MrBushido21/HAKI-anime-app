@@ -42,6 +42,9 @@ body.lock {
 .wrapper header nav a {
   font-size: 18px;
 }
+.wrapper header nav a.active {
+  color: crimson;
+}
 .wrapper header .dark-mode-btn {
   order: 9;
   position: relative;
@@ -87,6 +90,10 @@ body.lock {
 }
 .wrapper header .burger-menu.active .burger-line:nth-child(2) {
   transform: rotate(-45deg) translate(4px, -4px);
+}
+.wrapper .btnLogin:hover {
+  color: crimson;
+  transition: 0.3s ease 0s;
 }
 
 @media (max-width: 680px) {

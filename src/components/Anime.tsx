@@ -1,4 +1,5 @@
 import { AnimeType, CharactersType } from "../Type";
+import { Characters } from "./Characters";
 import { Trailer } from "./Trailer";
 
 type PropsType = {
@@ -65,18 +66,7 @@ export const Anime = ({
             }
 
             <h2>Characters</h2>
-            <div className='characters-container bg-slate-50 p-6'>
-
-                {
-                    animeCharacters.map(char =>
-                        <div key={char.character.mal_id} className="characters-item">
-                            <img src={char.character.images.jpg.image_url} alt="" />
-                            <div className='characters-name'>{char.character.name}</div>
-                            <div className='characters-role'>{char.role}</div>
-                        </div>
-                    )
-                }
-            </div>
+            <Characters animeCharacters={animeCharacters} />
         </div>
     );
 }

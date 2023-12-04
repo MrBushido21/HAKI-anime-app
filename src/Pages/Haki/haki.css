@@ -1,0 +1,5 @@
+.Haki .types-haki {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}

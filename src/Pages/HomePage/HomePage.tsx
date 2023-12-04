@@ -6,7 +6,6 @@ import './home.css'
 import { AnimeType } from '../../Type';
 
 type PropsType = {
-    animes: AnimeType[]
     getPopularAnime: () => void
     getAnime: () => void
     getAiringAnime: () => void
@@ -17,7 +16,6 @@ type PropsType = {
     searchAnime: () => void
 }
 export const HomePage = ({ 
-    animes,
     getPopularAnime,
     getAnime,
     getAiringAnime,
@@ -31,7 +29,9 @@ export const HomePage = ({
 
     return (
         <>
-            <div className='flex justify-center'><h1 className='font-bold text-6xl text-center uppercase pb-4'>Welcome to</h1></div>
+            <div className='flex justify-center'>
+                <h1 className='font-bold text-6xl text-center uppercase pb-4'>Welcome to</h1>
+            </div>
             <Logo />
             <h2 className="font-bold text-center text-4xl mt-12 dark:text-slate-50">Anime</h2>
             <Search 
@@ -46,10 +46,7 @@ export const HomePage = ({
             />
             <main className='mt-28 bg-slate-50 py-6 dark:bg-zinc-950'>
                 <div className="content container">
-                    <MainAnimes 
-                    animes={animes}
-                    searchValue={searchValue}
-                    />
+                    <MainAnimes />
                 </div>
             </main>
         </>

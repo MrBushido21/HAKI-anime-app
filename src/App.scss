@@ -39,6 +39,10 @@ body.lock {
 
             a {
                 font-size: 18px;
+
+                &.active {
+                    color: crimson;
+                }
             }
         }
 
@@ -107,6 +111,11 @@ body.lock {
         .burger-menu.active .burger-line:nth-child(2) {
             transform: rotate(-45deg) translate(4px, -4px);
         }
+    }
+
+    .btnLogin:hover {
+        color: crimson;
+        transition: .3s ease 0s;
     }
 }
 

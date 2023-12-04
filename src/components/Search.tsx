@@ -1,5 +1,7 @@
 import { KeyboardEvent } from "react"
 import { CategoryType } from "../App"
+import { useDispatch } from "react-redux"
+import { getAnimesByCategory } from "../store/animes/animesSlice"
 
 type PropsType = {
     getPopularAnime: () => void
@@ -26,6 +28,8 @@ export const Search = ({
             searchAnime()
         }
     }
+
+
     return (
         <section className="Search mt-12">
             <div className="container">
