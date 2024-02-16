@@ -5,6 +5,10 @@ export const observHaki = "https://th.bing.com/th/id/R.afd7fc0c06ec39b0497b2e04b
 export const armamentHaki = "https://i.pinimg.com/736x/64/2d/2b/642d2be8200a25f77a3066883149b007.jpg"
 export const cinquerorHaki = "https://i.pinimg.com/originals/82/fd/22/82fd22e2a3ecbb4ac2ede30b7d5a04b1.gif"
 
+
+// UserAvanar
+export const incognitoAva = "https://th.bing.com/th/id/OIP.OlnxO753VRgHKDLLDzCKoAHaHw?rs=1&pid=ImgDetMain"
+
 //For meito, img meito
 
 export const SupremeGrade: MeitoType[] = [

@@ -10,7 +10,8 @@ body.lock {
 .wrapper h1 {
   display: inline-block;
   background: linear-gradient(to right, #A855F7, #27AE60);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.4s ease-in-out;
 }
@@ -32,12 +33,18 @@ body.lock {
   /* BURGER */
   /* Rotate the lines to form an X */
 }
+.wrapper header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .wrapper header a:hover {
   color: crimson;
   transition: 0.3s ease 0s;
 }
 .wrapper header nav {
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 .wrapper header nav a {
   font-size: 18px;
@@ -121,4 +128,4 @@ body.lock {
   .nav.active {
     left: 0;
   }
-}
+}/*# sourceMappingURL=App.css.map */

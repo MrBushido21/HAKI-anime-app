@@ -4,7 +4,8 @@
   margin-bottom: 1.5rem;
   cursor: pointer;
   background: linear-gradient(to right, #A855F7, #27AE60);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.4s ease-in-out;
 }
@@ -17,7 +18,8 @@
   margin-bottom: 1.5rem;
   cursor: pointer;
   background: linear-gradient(to right, #A855F7, #27AE60);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.4s ease-in-out;
   font-size: 2rem;
@@ -64,7 +66,8 @@
 .characters-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
   row-gap: 50px;
 }
 .characters-container .characters-item img {
@@ -82,9 +85,10 @@
 .Mugiwars .characters-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
   row-gap: 50px;
 }
 .Mugiwars .characters-item {
   margin-bottom: 30px;
-}
+}/*# sourceMappingURL=animePage.css.map */

@@ -4,6 +4,8 @@ import { MainAnimes } from '../../components/MainAnimes';
 import { Search } from '../../components/Search';
 import './home.css'
 import { AnimeType } from '../../Type';
+import { useAppSelector } from '../../store/hooks';
+import { RootState } from '../../store/store';
 
 type PropsType = {
     getPopularAnime: () => void
@@ -26,7 +28,8 @@ export const HomePage = ({
     searchAnime
     }: PropsType) => {
 
-
+        const animes:AnimeType[] = useAppSelector(( store:RootState ) => store.animes.animes);
+        const favouriteAnimeIds:number[] = useAppSelector(( store:RootState ) => store.animes.favouriteAnimeIds);
     return (
         <>
             <div className='flex justify-center'>
@@ -46,7 +49,7 @@ export const HomePage = ({
             />
             <main className='mt-28 bg-slate-50 py-6 dark:bg-zinc-950'>
                 <div className="content container">
-                    <MainAnimes />
+                    <MainAnimes animes={animes} favouriteAnimeIds={favouriteAnimeIds}/>
                 </div>
             </main>
         </>

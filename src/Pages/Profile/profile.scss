@@ -1,0 +1,92 @@
+.profile {
+    position: relative;
+    background-size: cover !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+}
+
+.avatar-box {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 10px;
+
+    img {
+        width: 30%;
+    }
+}
+
+.animes-list {
+    cursor: pointer;
+    &:hover {
+        color: crimson;
+        transition: .3s ease 0s;
+    }
+}
+
+.logout {
+    width: 100px;
+    height: 35px;
+    border-radius: 4px;
+    background-color: crimson;
+    margin-top: 20px;
+}
+
+.userinfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.479);
+}
+
+.btn-bg, .btn-ava {
+    position: absolute;
+    right: 10px;
+
+    label {
+        background-color: crimson;
+    }
+
+    button {
+        border-radius: 4px;
+        border: 1px solid crimson;
+        width: 80px;
+    }
+}
+.btn-bg {
+    top: 20px
+}
+.btn-ava {
+    top: 103px;
+}
+
+// Стилі для нашого поля вводу
+.textareaBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    textarea {
+        width: 100%;
+        height: 100px;
+        resize: none;
+        color: black;
+        padding: 5px;
+    }
+    button {
+        width: 100px;
+        height: 35px;
+        border: 1px solid crimson;
+        border-radius: 4px;
+        margin-top: 5px;
+
+        &:hover {
+            background-color: crimson;
+            transition: .3s ease 0s;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { useEffect, useState } from 'react';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { Route, Routes } from 'react-router';
@@ -11,6 +11,10 @@ import { Mugiwars } from './Pages/Mugiwars/Mugiwars';
 import { HakiPage } from './Pages/Haki/HakiPage';
 import { Meito } from './Pages/Meito/Meito';
 import { Login } from './Pages/Login/Login';
+import { Profile } from './Pages/Profile/Profile';
+import axios from 'axios';
+import { useAuth } from './utils/functions';
+import { FavouriteAnime } from './Pages/FavouriteAnime/FavouriteAnime';
 
 export type CategoryType = "standart" | "popular" | "airing" | "upcoming" | "nothing"
 
@@ -52,7 +56,19 @@ function App() {
     getAnime()
   }, [])
   
-  
+
+  const { handleAuthResult } = useAuth();
+
+  useEffect(() => {
+        const token:any = localStorage.getItem('token')
+        axios.get('http://localhost:5000/me', { headers: { token } })
+        .then(({data}) => { handleAuthResult(data)
+           console.log(data)
+         })
+        .catch((err) => alert(err.response.data.message))
+    }, [])
+
+
   return (
     isLoading
     ? <h2>Loading...</h2>
@@ -75,6 +91,8 @@ function App() {
         <Route path='/haki' element={<HakiPage />}/>          
         <Route path='/meito' element={<Meito />}/>          
         <Route path='/login' element={<Login />}/>          
+        <Route path='/profile' element={<Profile />}/>          
+        <Route path='/favouriteAnime' element={<FavouriteAnime />}/>               
       </Routes>   
     </div>
   );

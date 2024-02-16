@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Anime } from '../../components/Anime'
 import { AnimeType, CharactersType } from '../../Type'
-import { getAnimeById, getAnimeCharacters } from '../../store/singleAnimePage/singleAnime'
+import { getAnimeById, getAnimeCharacters } from '../../store/singleAnimePage/singleAnimeSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { RootState } from '../../store/store'
 

@@ -1,57 +1,92 @@
+import "./login.css"
+
+import { useNavigate } from "react-router";
 import { useState } from "react";
 import { MyInput } from "./MyInpt";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { error } from "console";
-import { useAppDispatch } from "../../store/hooks";
-import { setUser } from "../../store/user/userSlice";
 
-type PropsType = {}
-export const Login = ({ }: PropsType) => {
+import axios from "axios";
+import { useAuth } from "../../utils/functions";
+
+
+
+
+export const Login = () => {
+
+    const { handleAuthResult } = useAuth();
+
     const [isSignUped, setSignUp] = useState(false)
 
-    const [emailValue, setEmailValue] = useState<string>('')
-    const [passwordValue, setPasswordValue] = useState<string>('')
-    const [usernameValue, setUsernameValue] = useState<string>('')
-    const [imageValue, setImageValue] = useState<string>('')
+    const [email, setEmail] = useState<string>('mrbushido21@ukr.net')
+    const [password, setPassword] = useState<string>('qwert78yui')
+    const [username, setUsername] = useState<string>('Oleg')
 
-    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
-    const handleSubmit = (e:any) => {
-        e.preventDefault()
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, emailValue, passwordValue)
-            .then(({user}) => {
-                console.log(user);
-                dispatch(setUser({
-                    email: user.email,
-                    id: user.uid,
-                }))
+     const handleSubmit = (e: any) => {
+        e.preventDefault();
+
+        let newUser = {
+            email,
+            password,
+            username,
+            avatarUrl: 'https://th.bing.com/th/id/OIP.OlnxO753VRgHKDLLDzCKoAHaHw?rs=1&pid=ImgDetMain',
+            profileBg: ''
+        }
+
+        let existingUser = {
+            email,
+            password 
+        }
+
+
+        if (isSignUped) {
+            axios.post('http://localhost:5000/register', newUser)
+            .then(({data}) => {
+                handleAuthResult(data)
+                localStorage.setItem('token', data.token)
+                navigate('/')
             })
-            .catch()
+            .catch((err) => alert(err.response.data))           
+            
+        } else {
+            axios.post('http://localhost:5000/login', existingUser)
+            .then(({data}) => {
+                console.log(data);              
+                handleAuthResult(data)
+                localStorage.setItem('token', data.token)
+                navigate('/')
+            })
+            .catch((err) => alert(err.response.data))
+        }    
     }
     
-
 
     return (
         <div className="Login h-screen text-slate-50">
             <div className="container">
                 <h2 className="text-4xl font-bold text-center my-20">Hello, Log in please:</h2>
                 <form onSubmit={handleSubmit} className="max-w-2xl border m-auto flex flex-col items-center p-4">
-                    <MyInput value={emailValue} onChange={setEmailValue} id="email" labelValue="Your email:" placeholder="Email.." type="email" />
-                    <MyInput value={passwordValue} onChange={setPasswordValue} id="password" labelValue="Your password:" placeholder="Password.." type="password" />
+                    <MyInput value={email} onChange={setEmail} id="email" labelValue="Your email:" placeholder="Email.." type="email" />
+                    <MyInput value={password} onChange={setPassword} id="password" labelValue="Your password:" placeholder="Password.." type="password" />
                     {
-                        isSignUped
-                            ? null
-                            : <div>
-                                If you are not registered, please click <span
-                                    className="underline cursor-pointer"
-                                    onClick={() => { setSignUp(true) }}
-                                >
-                                    here
-                                </span>
-                            </div>
+                        isSignUped &&                   
+                        <MyInput 
+                        value={username} 
+                        onChange={setUsername} 
+                        id="username" 
+                        labelValue="Your username:" 
+                        placeholder="Username.." 
+                        type="text" 
+                        />  
                     }
-
+                    <div>
+                        If you are {isSignUped ? "" : "not"} registered, please click <span
+                            className="underline cursor-pointer"
+                            onClick={() => { setSignUp(!isSignUped) }}
+                        >
+                            here
+                        </span>
+                    </div>
 
                     <button className="btnLogin my-4 border py2 px-4 rounded">{isSignUped ? "Sign Up" : "Log in"}</button>
                 </form>

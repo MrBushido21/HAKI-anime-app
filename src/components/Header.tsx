@@ -4,6 +4,7 @@ import sun from "../img/sun.svg"
 import moon from "../img/moon.svg"
 import { useAppSelector } from "../store/hooks"
 import { RootState } from "../store/store"
+import { incognitoAva } from "../utils/constans"
 type PropsType = {}
 export const Header = ({ }: PropsType) => {
 
@@ -17,7 +18,8 @@ export const Header = ({ }: PropsType) => {
         localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
     };
 
-    const userEmail = useAppSelector((state:RootState) => state.user.email)
+    const isUserAuth = useAppSelector((state:RootState) => state.user.isAuth)
+    const userImage = useAppSelector((state:RootState) => state.user.image)
 
 
     useEffect(() => {
@@ -62,8 +64,12 @@ export const Header = ({ }: PropsType) => {
                     </button>
                 </nav>
                 <div>
-                    { userEmail
-                        ? <Link to='/profile' className='ml-3 font-bold text-xl text-slate-50'>{userEmail}</Link>
+                    { isUserAuth 
+                        ? <Link to='/profile' className='ml-3 font-bold text-xl text-slate-50 flex items-center'>
+                           { userImage 
+                           ? <img src={userImage} className="avatar"/> 
+                           : <img src={incognitoAva} className="avatar"/>}
+                        </Link>
                         : <Link to='/login' className='ml-3 font-bold text-xl text-slate-50'>Login</Link>
                     }
                 </div>

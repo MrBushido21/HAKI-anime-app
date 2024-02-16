@@ -1,0 +1,23 @@
+.custom-file-input {
+    display: none; /* Приховати інпут файлу */
+  }
+  
+  .custom-file-input-label {
+    // background-color: crimson; /* Задайте колір фону кнопки */
+    color: white; /* Задайте колір тексту кнопки */
+    padding: 10px 15px; /* Задайте відступи */
+    cursor: pointer; /* Змініть форму курсору на вказівник при наведенні */
+    border-radius: 5px; /* Округлені кути кнопки */
+    border: 1px solid crimson; /* Тонкий бордюр для кращого вигляду */
+    margin: 10px 0;
+  }
+  
+  .custom-file-input-label:hover {
+    background-color: crimson; /* Змініть колір фону при наведенні */
+    transition: .3s ease 0s;
+    
+  }
+
+  form {
+    overflow-y: auto;
+  }

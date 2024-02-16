@@ -139,6 +139,7 @@
         /* Проміжок між елементами */
 
         .main-anime__poster {
+            position: relative;
             cursor: pointer;
             &:hover {
                 box-shadow: 1px 1px 5px;
@@ -148,6 +149,23 @@
                 width: 100%; 
                 height: 100%;
             }
+
+           .like {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: 1px solid crimson;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            font-size: 20px;
+
+            &:hover {
+                background-color: crimson;
+            }
+           } 
         }
     }
 }

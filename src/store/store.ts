@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import animesSlice from "./animes/animesSlice";
-import singleAnimeSlice from "./singleAnimePage/singleAnime";
 import userSlice from "./user/userSlice";
+import singleAnimeSlice from "./singleAnimePage/singleAnimeSlice";
+
 
 
 const store = configureStore({
