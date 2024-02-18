@@ -15,6 +15,7 @@ import { Profile } from './Pages/Profile/Profile';
 import axios from 'axios';
 import { useAuth } from './utils/functions';
 import { FavouriteAnime } from './Pages/FavouriteAnime/FavouriteAnime';
+import { API } from './utils/constans';
 
 export type CategoryType = "standart" | "popular" | "airing" | "upcoming" | "nothing"
 
@@ -61,7 +62,7 @@ function App() {
 
   useEffect(() => {
         const token:any = localStorage.getItem('token')
-        axios.get('http://localhost:5000/me', { headers: { token } })
+        axios.get(`${API}/me`, { headers: { token } })
         .then(({data}) => { handleAuthResult(data)
            console.log(data)
          })

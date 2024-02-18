@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { setFavouriteAnime } from '../store/animes/animesSlice'
 import axios from 'axios'
 import { RootState } from '../store/store'
+import { API } from '../utils/constans'
 
 type PropsType = {
     animes: AnimeType[]
@@ -34,7 +35,7 @@ export const MainAnimes = ({ animes, favouriteAnimeIds }: PropsType) => {
         };
         if (isFavourite) {
             // Якщо вже є, то видалити  
-            axios.delete(`http://localhost:5000/user/favouriteAnime/${userId}`, {
+            axios.delete(`${API}/user/favouriteAnime/${userId}`, {
                 data: {
                     id: id
                 }
@@ -43,7 +44,7 @@ export const MainAnimes = ({ animes, favouriteAnimeIds }: PropsType) => {
             .catch((err) => alert(err.response.data));
         } else {
             // Якщо немає, то додати
-            axios.post(`http://localhost:5000/user/favouriteAnime/${userId}`, {
+            axios.post(`${API}/user/favouriteAnime/${userId}`, {
                 anime: anime,
                 id: id
             })

@@ -2,7 +2,7 @@ import './profile.scss'
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { RootState } from '../../store/store';
-import { incognitoAva } from '../../utils/constans';
+import { API, incognitoAva } from '../../utils/constans';
 import { setLogOut, setPost } from '../../store/user/userSlice';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router';
@@ -73,7 +73,7 @@ export const Profile = ({ }: PropsType) => {
         formData.append(fieldname, image);
 
 
-        axios.patch(`http://localhost:5000/user/${fieldname}/${userId}`, formData)
+        axios.patch(`${API}/user/${fieldname}/${userId}`, formData)
             .then(({ data }) => {
                 console.log(data);
                 setImage('')

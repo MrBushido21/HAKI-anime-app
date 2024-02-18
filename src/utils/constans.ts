@@ -1,5 +1,7 @@
 import { MeitoType } from "../Type"
 
+export const API = "https://expressserver-0rxb.onrender.com"
+
 //For HAKI types of haki
 export const observHaki = "https://th.bing.com/th/id/R.afd7fc0c06ec39b0497b2e04b00729ef?rik=Isu7YT6eS7PnlQ&riu=http%3a%2f%2forig12.deviantart.net%2f51d6%2ff%2f2012%2f230%2fd%2f1%2fluffy__s_observation_haki__2_gif_by_driz_nb-d5bmdtl.gif&ehk=eKvU7%2b69M69HzodjDuLZbZNtNMvvpJcnEagN6KDwn64%3d&risl=&pid=ImgRaw&r=0"
 export const armamentHaki = "https://i.pinimg.com/736x/64/2d/2b/642d2be8200a25f77a3066883149b007.jpg"

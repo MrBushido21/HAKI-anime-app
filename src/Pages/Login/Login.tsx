@@ -6,6 +6,7 @@ import { MyInput } from "./MyInpt";
 
 import axios from "axios";
 import { useAuth } from "../../utils/functions";
+import { API } from "../../utils/constans";
 
 
 
@@ -40,7 +41,7 @@ export const Login = () => {
 
 
         if (isSignUped) {
-            axios.post('http://localhost:5000/register', newUser)
+            axios.post(`${API}/register`, newUser)
             .then(({data}) => {
                 handleAuthResult(data)
                 localStorage.setItem('token', data.token)
@@ -49,7 +50,7 @@ export const Login = () => {
             .catch((err) => alert(err.response.data))           
             
         } else {
-            axios.post('http://localhost:5000/login', existingUser)
+            axios.post(`${API}/login`, existingUser)
             .then(({data}) => {
                 console.log(data);              
                 handleAuthResult(data)
